@@ -35,7 +35,8 @@ async function onCreateNode(
   const content = await loadNodeContent(node)
   const parsed = JSON.parse(content)
 
-  if (!parsed.menu) {
+  if (!parsed.menu || !parsed.pages) {
+    // warn use
     return
   }
 
@@ -45,10 +46,11 @@ async function onCreateNode(
 
   const menuMap = reduceBy('page')(menu)
 
-  const pagesProcessed = pages.map(page => ({
+  const pagesProcessed = Object.entries(pages).map(([name, page]) => ({
     ...page,
-    path: slugify(basePath, !page.homepage && page.name),
-    title: menuMap[page.name].value,
+    name,
+    path: slugify(basePath, !page.homepage && name),
+    title: menuMap[name].value,
     props: JSON.stringify(page.props || {})
   }))
 
