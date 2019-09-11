@@ -1,7 +1,7 @@
 {
   "name": "@luciannojunior/gatsby-transformer-pages-json",
   "description": "Gatsby transformer plugin to turn a pages.json file into pages and menu configurations.",
-  "version": "0.0.1",
+  "version": "0.1.0",
   "author": "Luciano Júnior <luciannojunior@gmail.com>",
   "main": "index.js",
   "license": "MIT",
