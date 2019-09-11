@@ -49,7 +49,7 @@ async function onCreateNode(
     ...page,
     path: slugify(basePath, !page.homepage && page.name),
     title: menuMap[page.name].value,
-    props: JSON.stringify(page.props || '{}')
+    props: JSON.stringify(page.props || {})
   }))
 
   const pagesMap = reduceBy('name')(pagesProcessed)
